@@ -21,7 +21,7 @@
         protected function tearDown()
         {
             Course::deleteAll();
-            // Stylist::deleteAll();
+            Student::deleteAll();
         }
 
     function test_save()
