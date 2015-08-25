@@ -1,0 +1,19 @@
+//set course
+
+//gets course
+
+//save course
+
+//get all courses
+
+//update course
+
+//delete course
+
+//delete all courses
+
+//one student can enroll in one course
+
+//one student can enroll in many courses
+
+//many students can enroll in one course
