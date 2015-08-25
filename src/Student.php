@@ -11,7 +11,7 @@
             $this->student_name = $student_name;
             $this->enroll_date = $enroll_date;
         }
-
+//getters
         function getStudentName()
         {
             return $this->student_name;
@@ -26,7 +26,7 @@
         {
             return $this->id;
         }
-
+//setters
         function setStudentName($new_student_name)
         {
             $this->student_name = (string) $new_student_name;
@@ -37,23 +37,26 @@
             $this->enroll_date = (string) $new_enroll_date;
         }
 
+//save function
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO students_t (student_name, enroll_date) VALUES ('{$this->getStudentName()}', '{$this->getEnrollDate()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-//One update function that specifies which column to update; column to update value is handled by student_edit twig page and app.php /student_edit patch route
+//see update() in Course.php for more detail
         function update($column_to_update, $new_student_information)
         {
             $GLOBALS['DB']->exec("UPDATE students_t SET {$column_to_update} = '{$new_student_information}' WHERE id = {$this->getId()};");
         }
 
+//function to delete one student
         function deleteOne()
         {
             $GLOBALS['DB']->exec("DELETE FROM students_t WHERE id = {$this->getId()};");
         }
 
+//function to retrieve all students
         static function getAll()
         {
             $returned_students = $GLOBALS['DB']->query("SELECT * FROM students_t;");
@@ -68,11 +71,13 @@
             return $students;
         }
 
+//function to delete all students
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM students_t;");
         }
 
+//function to find a single student
         static function find($search_id)
         {
             $found_student = null;

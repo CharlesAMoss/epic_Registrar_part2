@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Add a new Student</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/../main.css">
+    </head>
+    <body>
+        <h2>Add a new student</h2>
+        <div class ="container">
+            <div class="submit-form">
+                <form action='/student_add' method='post'>
+                    <label for='student_name'>
+                        Student name:
+                        </label>
+                        <input id='student_name' name='student_name' type='text'>
+
+                    <label for='enroll_date'>
+                        Enrollment date:
+                        </label>
+                        <input id='enroll_date' name='enroll_date' type='date'>
+
+                    <button class="btn btn-default" type='submit'>
+                        Add Student
+                        </button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

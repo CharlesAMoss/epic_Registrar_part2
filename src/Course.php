@@ -12,6 +12,7 @@
             $this->course_number = $course_number;
         }
 
+//getters
         function getCourseName()
         {
             return $this->course_name;
@@ -27,6 +28,7 @@
             return $this->id;
         }
 
+//setters
         function setCourseName($new_course_name)
         {
             $this->course_name = (string) $new_course_name;
@@ -37,23 +39,26 @@
             $this->course_number = (string) $new_course_number;
         }
 
+//save function
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO courses_t (course_name, course_number) VALUES ('{$this->getCourseName()}', '{$this->getCourseNumber()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-//One update function that specifies which column to update; column to update value is handled by course_edit twig page and app.php /course_edit patch route
+//Uses a variable to specify which column to update; column to update value is handled by course_edit twig page and app.php /course_edit patch route
         function update($column_to_update, $new_course_information)
         {
             $GLOBALS['DB']->exec("UPDATE courses_t SET {$column_to_update} = '{$new_course_information}' WHERE id = {$this->getId()};");
         }
 
+//function for deleting a single course
         function deleteOne()
         {
             $GLOBALS['DB']->exec("DELETE FROM courses_t WHERE id = {$this->getId()};");
         }
 
+//function for retrieving all courses
         static function getAll()
         {
             $returned_courses = $GLOBALS['DB']->query("SELECT * FROM courses_t;");
@@ -67,12 +72,13 @@
             }
             return $courses;
         }
-
+//function for deleting all courses
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM courses_t;");
         }
 
+//function for finding a specific course
         static function find($search_id)
         {
             $found_course = null;
