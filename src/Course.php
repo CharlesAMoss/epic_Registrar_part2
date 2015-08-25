@@ -43,6 +43,17 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+//One update function that specifies which column to update; column to update value is handled by course_edit twig page and app.php /course_edit patch route
+        function update($column_to_update, $new_course_information)
+        {
+            $GLOBALS['DB']->exec("UPDATE courses_t SET {$column_to_update} = '{$new_course_information}' WHERE id = {$this->getId()};");
+        }
+
+        function deleteOne()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM courses_t WHERE id = {$this->getId()};");
+        }
+
         static function getAll()
         {
             $returned_courses = $GLOBALS['DB']->query("SELECT * FROM courses_t;");
@@ -56,5 +67,24 @@
             }
             return $courses;
         }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM courses_t;");
+        }
+
+        static function find($search_id)
+        {
+            $found_course = null;
+            $courses = Course::getAll();
+            foreach($courses as $course) {
+                $course_id = $course->getId();
+                if ($course_id == $search_id) {
+                    $found_course = $course;
+                }
+            }
+            return $found_course;
+        }
+
     }
 ?>
