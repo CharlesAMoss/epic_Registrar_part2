@@ -28,10 +28,21 @@
 
 //route to add student page
     $app->get("/student_add", function() use($app){
-        return $app['twig']->render('student_add.html.twig');
+        return $app['twig']->render('student_add.html.twig', array('students' => Student::getAll()));
     });
 
 //route to post new information to database
+
+    $app->post("/student_add", function() use ($app) {
+       $student_name = $_POST['student_name'];
+       $enroll_date = $_POST['enroll_date'];
+       $student = new Student($student_name, $id = null, $enroll_date);
+       $student->save();
+       return $app['twig']->render('student_add.html.twig', array('student' => $student, 'students' => Student::getAll(), 'courses' => $task->getCourses(), 'all_courses' => Courses::getAll()));
+    });
+
+
+
 
 //route to view all students
 

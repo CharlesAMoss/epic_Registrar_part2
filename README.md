@@ -2,11 +2,11 @@
 
 ##### An app to store and retrieve university students and courses, 2015 August 25st
 
-#### By Timothy White and Ike Mattice
+#### By Timothy White & Ike Mattice & Charles A Moss & Tyler Deem
 
 ## Description
 
-Using PHP, SQL, and Silex, this app will create a database to store the names of students and the courses they are enrolled in. This app will also display all students within a course. 
+Using PHP, SQL, and Silex, this app will create a database to store the names of students and the courses they are enrolled in. This app will also display all students within a course.
 
 ## Setup
 
@@ -23,9 +23,7 @@ This app utilizes PHP, Silex, SQL, Twig, CSS, and HTML
 
 ### Legal
 
-
-
-Copyright (c) 2015 **Tim White and Ike Mattice**
+Copyright (c) 2015 **Tim White & Ike Mattice & Charles A Moss & Tyler Deem **
 
 This software is licensed under the MIT license.
 

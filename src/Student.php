@@ -40,26 +40,26 @@
 //save function
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO students_t (student_name, enroll_date) VALUES ('{$this->getStudentName()}', '{$this->getEnrollDate()}');");
+            $GLOBALS['DB']->exec("INSERT INTO students (student_name, enroll_date) VALUES ('{$this->getStudentName()}', '{$this->getEnrollDate()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
 //see update() in Course.php for more detail
         function update($column_to_update, $new_student_information)
         {
-            $GLOBALS['DB']->exec("UPDATE students_t SET {$column_to_update} = '{$new_student_information}' WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE students SET {$column_to_update} = '{$new_student_information}' WHERE id = {$this->getId()};");
         }
 
 //function to delete one student
         function deleteOne()
         {
-            $GLOBALS['DB']->exec("DELETE FROM students_t WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM students WHERE id = {$this->getId()};");
         }
 
 //function to retrieve all students
         static function getAll()
         {
-            $returned_students = $GLOBALS['DB']->query("SELECT * FROM students_t;");
+            $returned_students = $GLOBALS['DB']->query("SELECT * FROM students;");
             $students = array();
             foreach($returned_students as $student) {
                 $student_name = $student['student_name'];
@@ -74,7 +74,7 @@
 //function to delete all students
         static function deleteAll()
         {
-            $GLOBALS['DB']->exec("DELETE FROM students_t;");
+            $GLOBALS['DB']->exec("DELETE FROM students;");
         }
 
 //function to find a single student
@@ -92,4 +92,6 @@
         }
 
     }
+
+
 ?>

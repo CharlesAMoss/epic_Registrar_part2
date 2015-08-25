@@ -24,6 +24,20 @@
                         </button>
                 </form>
             </div>
+
+            <h1>List of all Student:</h1>
+            {% if students is not empty %}
+                <p>Here are all your students:</p>
+                <ul>
+                    {% for student in students %}
+                        <li><a href="/students/{{ student.getId }}">{{ student.getStudentName }}</a></li>
+                        <ul>
+                            <li>{{ student.getEnrollDate }}</li>
+                        </ul>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
         </div>
     </body>
 </html>

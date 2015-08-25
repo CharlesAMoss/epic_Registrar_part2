@@ -42,26 +42,26 @@
 //save function
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO courses_t (course_name, course_number) VALUES ('{$this->getCourseName()}', '{$this->getCourseNumber()}');");
+            $GLOBALS['DB']->exec("INSERT INTO courses (course_name, course_number) VALUES ('{$this->getCourseName()}', '{$this->getCourseNumber()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
 //Uses a variable to specify which column to update; column to update value is handled by course_edit twig page and app.php /course_edit patch route
         function update($column_to_update, $new_course_information)
         {
-            $GLOBALS['DB']->exec("UPDATE courses_t SET {$column_to_update} = '{$new_course_information}' WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE courses SET {$column_to_update} = '{$new_course_information}' WHERE id = {$this->getId()};");
         }
 
 //function for deleting a single course
         function deleteOne()
         {
-            $GLOBALS['DB']->exec("DELETE FROM courses_t WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM courses WHERE id = {$this->getId()};");
         }
 
 //function for retrieving all courses
         static function getAll()
         {
-            $returned_courses = $GLOBALS['DB']->query("SELECT * FROM courses_t;");
+            $returned_courses = $GLOBALS['DB']->query("SELECT * FROM courses;");
             $courses = array();
             foreach($returned_courses as $course) {
                 $course_name = $course['course_name'];
@@ -75,7 +75,7 @@
 //function for deleting all courses
         static function deleteAll()
         {
-            $GLOBALS['DB']->exec("DELETE FROM courses_t;");
+            $GLOBALS['DB']->exec("DELETE FROM courses;");
         }
 
 //function for finding a specific course
